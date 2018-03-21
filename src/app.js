@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './components/App';
+import MetalRoulette from './components/MetalRoulette';
 
-ReactDOM.render(<App />, document.getElementById('main'));
+ReactDOM.render(<MetalRoulette />, document.getElementById('main'));
 
