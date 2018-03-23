@@ -10,12 +10,24 @@ class RandomBand extends React.Component {
         bandName: "",
         bandDetails: "",
         discography: [],
-        logo: ""
+        logo: "",
+        isLoading: false
       }
     }
   }
 
   randomBandRequest = () => {
+    this.setState(state => ({
+      ...state,
+      randomBand: {
+        ...randomBand,
+        bandName: "",
+        bandDetails: "",
+        discography: [],
+        logo: "",
+        isLoading: true
+      }
+    }))
     fetch(randomBand).then((response) => response.json()).then((band) => {
       this.setState(state => ({
         ...state,
@@ -32,18 +44,20 @@ class RandomBand extends React.Component {
   }
 
   render() {
-    const { bandName, bandDetails, logo, discography} = this.state.randomBand
-    return (
-      <div className="randomizer-body">
-        <BandRandomizer randomBandRequest={this.randomBandRequest}/>
-        <BandDetails 
-        bandName={bandName}
-        bandDetails={bandDetails}
-        bandLogo={logo}
-        discography={discography}
-        />
-      </div>
-    )
-  }
+  
+    const { bandName, bandDetails, logo, discography, isLoading} = this.state.randomBand
+      return (
+        <div className="randomizer-body">
+          <BandRandomizer randomBandRequest={this.randomBandRequest}/>
+          <BandDetails 
+          bandName={bandName}
+          bandDetails={bandDetails}
+          bandLogo={logo}
+          discography={discography}
+          isLoading={isLoading}
+          />
+        </div>
+      )
+    }
 }
 export default RandomBand

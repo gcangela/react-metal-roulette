@@ -1,27 +1,21 @@
 import React from 'react'
 
-const BandDetails = ( { bandDetails, bandName, bandLogo, randomBandRequest, discography }) => {
+const BandDetails = ( { bandDetails, bandName, bandLogo, randomBandRequest, discography, isLoading }) => {
   const detailsList = Object.keys(bandDetails).map((detail) => {
     return <li key={detail.length}><strong>{detail.charAt(0).toUpperCase() + detail.slice(1)}:</strong>  <span className="band-info"><em>{bandDetails[detail]}</em></span></li>
   })
   const discographyRender = discography.map((album) => {
     return <li key={album.id}>{album.title} <em>{album.year}</em></li>
   })
-  // if(discography.length > 0) {
-  //   return (
-  //     <div className="container">
-  //      <h4><strong>Discography</strong></h4>
-  //       <ul className="discographyList">
-  //         {discographyRender}
-  //       </ul>
-  //     </div>
-  //   )
-  // } else {
-  //   return (
-  //     <div></div>
-  //   )
-  // }
-  if (bandDetails) {
+  if(isLoading) {
+    return (
+      <div className="container text-center">
+        <img className="headbang" src="https://i.imgur.com/jSagKZ3.gif"/>
+        <h3 className="randomizerText">Randomizing...</h3>
+      </div>
+    )
+  } 
+  else if (bandDetails) {
       return (
         <div className="container">
           <div className="row">
@@ -46,7 +40,8 @@ const BandDetails = ( { bandDetails, bandName, bandLogo, randomBandRequest, disc
          </div>
         </div>
       )
-    } else{
+    } 
+  else{
       return (
         <div></div>
       )
