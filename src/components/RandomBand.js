@@ -1,7 +1,7 @@
 import React from 'react'
 import BandDetails from './BandDetails';
 import BandRandomizer from './BandRandomizer'
-const randomBand = `http://em.wemakesites.net/band/random?api_key=e35f39ea-9d1f-4747-9e6d-2b08a6564dda`
+const randomBand = `//em.wemakesites.net/band/random?api_key=e35f39ea-9d1f-4747-9e6d-2b08a6564dda`
 class RandomBand extends React.Component {
   constructor(props) {
     super(props)
